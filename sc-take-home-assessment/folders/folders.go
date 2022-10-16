@@ -5,19 +5,21 @@ import (
 )
 
 func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
-	var (
-		err error
-		f1  Folder
-		fs  []*Folder
-	)
+	// var (
+	// 	err error
+	// 	f1  Folder
+	// 	fs  []*Folder
+	// )
 	f := []Folder{}
 	r, _ := FetchAllFoldersByOrgID(req.OrgID)
 	for k, v := range r {
 		f = append(f, *v)
+		k++
 	}
 	var fp []*Folder
 	for k1, v1 := range f {
 		fp = append(fp, &v1)
+		k1++
 	}
 	var ffr *FetchFolderResponse
 	ffr = &FetchFolderResponse{Folders: fp}
