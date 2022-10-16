@@ -24,7 +24,7 @@ import (
 //and adds it to a slice of pointers to folders.
 // Put it all into the FetchFolderresponse variable
 
-func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
+func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // Parameters are (req *FetchFolderRequest) , It returns (*FetchFolderResponse, error)
 	// var (
 	// 	err error // initialises a variable of error type
 	// 	f1  Folder // initialises a folder struct
