@@ -57,3 +57,7 @@ func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
 	}
 	return resFolder, nil // it returns resFolder as the slice of pointer to Folder, and returns error as nil.
 }
+
+//Comments
+// One comment I would make would be to have clearer variables. As it would help with code readability if the variable names are more intuitive.
+// The GetAllFolders function has a return of an error yet only returns nil. I would add error handling of some kind to utilise this feature. Otherwise its just a waste.
