@@ -9,10 +9,13 @@ I find this to be easier to understand overall when variables are more related t
 I added an error handler as it was only passing back nil and wasn't utilising that return variable so I added one in to show where there error may occur.
 
 //
+
 **Testing**
 I tried to implement tests but this section currently is a WIP
 //
+
 **Component 2**
+I completed my pagination in the Folders.go folder.
 Steps to get my Function working
 Rename GetAllFolders to GetAllFolders1
 Rename Pagination to GetAllFolders
