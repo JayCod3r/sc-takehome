@@ -45,6 +45,7 @@ func pagination() {
 	// for i := 0; i <= 50; i++ {
 
 	// 	fmt.Println("Choose a token between 0 and 499")
+	//fmt.Println("___________________________________________________")
 	// 	fmt.Scanln(&token)
 	// 	if i == 49 { // this is just to keep track if you keep going through
 	// 		fmt.Println("___________________________________________________")
