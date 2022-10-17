@@ -15,7 +15,7 @@ Testing
 I tried to implement tests but this section currently is a WIP
 //
 Component 2
-My method for pagination
+My method for pagination was done in the folders.go file.
 It prompts the user to enter a token number from 0-499
 It then will print out the two folders related to that token number, Also it will print out the previous token and the next token.
 
