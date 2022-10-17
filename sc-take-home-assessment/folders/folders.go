@@ -2,7 +2,7 @@ package folders
 
 import (
 	"errors"
-	"fmt"
+	"fmt" // imported this to check what is going on overall in the ranges.
 
 	"github.com/gofrs/uuid"
 )
@@ -57,7 +57,7 @@ func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
 	var fetchResponse *FetchFolderResponse                         // var pointer to FetchFoldersResponse.
 	fetchResponse = &FetchFolderResponse{Folders: FolderOfFolders} // ffr equals dereferences FetchFolderResponse for
 
-	return fetchResponse, nil // it returns fetchFolderResponse and nil as the error.
+	return fetchResponse, nil // it returns fetchFolderResponse and nil as the error. // FetchFolder response is a struct of Folders[] *Folder
 
 }
 
