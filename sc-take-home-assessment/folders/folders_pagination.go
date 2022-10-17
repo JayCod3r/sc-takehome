@@ -2,7 +2,7 @@ package folders
 
 import (
 	"errors"
-
+	//"fmt"
 	"github.com/gofrs/uuid"
 )
 
@@ -34,19 +34,24 @@ func pagination() {
 
 	// The aim is to group up all the folders in twos and pair them with a token. Also Have a token that directs them towards the next set.
 	// If I put a loop and have a map with a key. and it will put two folders into each segement then have a key. to access that area in the map.
-	// f := []Folder{}
+	// Folders2 := []Folder{}
 	// r, _ := FetchAllFoldersByOrgID(req.OrgID)
 	// for k, v := range r { // for , pointer to folder, in a slice of pointers to folder.
-	// 	f = append(f, *v) // this appends *v to the slice f
+	// 	Folders2 = append(Folders2, *v) // this appends *v to the slice f
 	// 	k++
 	// }
-
+	// /////////
 	// var token int
-	// for i := 0; i <= 5; i++ {
+	// for i := 0; i <= 50; i++ {
 
 	// 	fmt.Println("Choose a token between 0 and 499")
 	// 	fmt.Scanln(&token)
+	// 	if i == 49 { // this is just to keep track if you keep going through
+	// 		fmt.Println("___________________________________________________")
+	// 		fmt.Println("One more search left ")
+	// 		fmt.Println("___________________________________________________")
 
+	// 	}
 	// 	if token <= -2 || token >= 500 { // This is because The tokens start at 0-499 as 0 is the first one. so there are still 500 token
 	// 		// Also I don't want them to type in a negative integer as it would bring up none of the entries.
 
@@ -62,10 +67,14 @@ func pagination() {
 	// 		fmt.Println("___________________________________________________")
 	// 		fmt.Print("Token: ")
 	// 		fmt.Println(token)
-	// 		fmt.Print("Folder entry 1: ")
-	// 		fmt.Println(f[token])
-	// 		fmt.Print("Folder entry 2: ")
-	// 		fmt.Println(f[token+1])
+	// 		fmt.Print("Folder entry ")
+	// 		fmt.Print(token + 1)
+	// 		fmt.Print(": ")
+	// 		fmt.Println(Folders2[token])
+	// 		fmt.Print("Folder entry ")
+	// 		fmt.Print(token + 2)
+	// 		fmt.Print(": ")
+	// 		fmt.Println(Folders2[token+1])
 	// 		fmt.Println("Previous Token: No Previous Token")
 	// 		fmt.Println("Next Token: 1")
 	// 		fmt.Println("Enter -1 to end")
@@ -74,20 +83,25 @@ func pagination() {
 	// 		fmt.Println("___________________________________________________")
 	// 		fmt.Print("Token: ")
 	// 		fmt.Println(token)
-	// 		fmt.Println("Folder entry 1: ")
-	// 		fmt.Println(f[token*2])
+	// 		fmt.Print("Folder entry 999: ")
+	// 		fmt.Println(Folders2[token*2])
 	// 		fmt.Print("Previous Token: ")
 	// 		fmt.Println(token - 1)
-	// 		fmt.Print("Next Token: No Next Token")
+	// 		fmt.Println("Next Token: No Next Token")
+	// 		fmt.Println("Enter -1 to end")
 	// 		fmt.Println("___________________________________________________")
 	// 	} else {
 	// 		fmt.Println("___________________________________________________")
 	// 		fmt.Print("Token: ")
 	// 		fmt.Println(token)
-	// 		fmt.Print("Folder entry 1:")
-	// 		fmt.Println(f[token*2])
-	// 		fmt.Print("Folder entry 2:")
-	// 		fmt.Println(f[token*2+1])
+	// 		fmt.Print("Folder entry ")
+	// 		fmt.Print(token*2 + 1)
+	// 		fmt.Print(": ")
+	// 		fmt.Println(Folders2[token*2])
+	// 		fmt.Print("Folder entry ")
+	// 		fmt.Print(token*2 + 2)
+	// 		fmt.Print(": ")
+	// 		fmt.Println(Folders2[token*2+1])
 	// 		fmt.Print("Previous Token: ")
 	// 		fmt.Println(token - 1)
 	// 		fmt.Print("Next Token: ")
