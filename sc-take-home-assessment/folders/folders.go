@@ -50,7 +50,7 @@ func OldGetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { /
 	return ffr, nil                         // returns the ffr and error as nil
 }
 
-func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY MODIFIED GetAllFolders()
+func sGetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY MODIFIED GetAllFolders()
 	FolderOfFolders, err := FetchAllFoldersByOrgID(req.OrgID) // Made variables easier for me to understand as Folder Of Folders is more readable than a letter.
 	if err != nil {
 		return &FetchFolderResponse{}, errors.New("Error OCCURRED IN GETALLFOLDERS") // if an error is present in the getallfolders function then it will return there was an error to help fix it if need be.
@@ -78,7 +78,7 @@ func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
 // One comment I would make would be to have clearer variables. As it would help with code readability if the variable names are more intuitive.
 // The GetAllFolders function has a return of an error yet only returns nil. I would add error handling of some kind to utilise this feature. Otherwise its just a waste.
 
-func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY PAGINATION
+func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY PAGINATION
 	/////////The way I got this section to work was I renamed this method to GetAllFolders. And changed the name of the other GetAllFolders Method.
 	/////////
 	// This section puts the data into the Folders2
@@ -93,6 +93,7 @@ func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS
 	for i := 0; i <= 50; i++ {
 
 		fmt.Println("Choose a token between 0 and 499")
+		fmt.Println("___________________________________________________")
 		fmt.Scanln(&token)
 		if i == 49 { // this is just to keep track if you keep going through
 			fmt.Println("___________________________________________________")
