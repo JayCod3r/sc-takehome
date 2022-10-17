@@ -89,11 +89,16 @@ func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS
 	}
 	/////////
 	var token int
-	for i := 0; i <= 5; i++ {
+	for i := 0; i <= 50; i++ {
 
 		fmt.Println("Choose a token between 0 and 499")
 		fmt.Scanln(&token)
+		if i == 49 { // this is just to keep track if you keep going through
+			fmt.Println("___________________________________________________")
+			fmt.Println("One more search left ")
+			fmt.Println("___________________________________________________")
 
+		}
 		if token <= -2 || token >= 500 { // This is because The tokens start at 0-499 as 0 is the first one. so there are still 500 token
 			// Also I don't want them to type in a negative integer as it would bring up none of the entries.
 
