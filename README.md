@@ -2,6 +2,7 @@
 My application to sc
 
 **Component 1**
+
 My overall Comments and improvements
 I made it so the variables were more readable and intuitive rather than just letters. 
 I find this to be easier to understand overall when variables are more related to what they are doing.
@@ -15,6 +16,7 @@ I tried to implement tests but this section currently is a WIP
 //
 
 **Component 2**
+
 I completed my pagination in the Folders.go folder.
 Steps to get my Function working
 Rename GetAllFolders to GetAllFolders1
