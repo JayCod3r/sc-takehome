@@ -30,6 +30,8 @@ import (
 
 // { data: [9, 10], token: null }
 func pagination() {
+	//I completed this section in the folders.go file..,
+
 	// The aim is to group up all the folders in twos and pair them with a token. Also Have a token that directs them towards the next set.
 	// If I put a loop and have a map with a key. and it will put two folders into each segement then have a key. to access that area in the map.
 	// f := []Folder{}

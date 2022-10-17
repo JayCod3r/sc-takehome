@@ -77,7 +77,7 @@ func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
 // One comment I would make would be to have clearer variables. As it would help with code readability if the variable names are more intuitive.
 // The GetAllFolders function has a return of an error yet only returns nil. I would add error handling of some kind to utilise this feature. Otherwise its just a waste.
 
-func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { //
+func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY PAGINATION
 	/////////The way I got this section to work was I renamed this method to GetAllFolders. And changed the name of the other GetAllFolders Method.
 	/////////
 	// This section puts the data into the Folders2
