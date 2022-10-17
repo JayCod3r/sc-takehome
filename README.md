@@ -17,7 +17,7 @@ I tried to implement tests but this section currently is a WIP
 
 **Component 2**
 
-I completed my pagination in the Folders.go folder.
+I completed my pagination in the Folders.go file.
 Steps to get my Function working
 
 1. Rename GetAllFolders to GetAllFolders1
