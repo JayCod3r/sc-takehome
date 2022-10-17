@@ -49,7 +49,8 @@ func OldGetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { /
 	ffr = &FetchFolderResponse{Folders: fp} // fetchfolder response struct
 	return ffr, nil                         // returns the ffr and error as nil
 }
-func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
+
+func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS IS MY MODIFIED GetAllFolders()
 	FolderOfFolders, err := FetchAllFoldersByOrgID(req.OrgID) // Made variables easier for me to understand as Folder Of Folders is more readable than a letter.
 	if err != nil {
 		return &FetchFolderResponse{}, errors.New("Error OCCURRED IN GETALLFOLDERS") // if an error is present in the getallfolders function then it will return there was an error to help fix it if need be.
@@ -154,5 +155,3 @@ func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { // THIS
 	var fetchResponse *FetchFolderResponse
 	return fetchResponse, nil
 }
-
-////
