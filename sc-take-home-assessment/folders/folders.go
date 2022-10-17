@@ -1,6 +1,9 @@
 package folders
 
 import (
+	"errors"
+	"fmt"
+
 	"github.com/gofrs/uuid"
 )
 
@@ -24,7 +27,7 @@ import (
 //and adds it to a slice of pointers to folders.
 // Put it all into the FetchFolderresponse variable
 
-func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // Parameters are (req *FetchFolderRequest) , It returns (*FetchFolderResponse, error)
+func OldGetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // Parameters are (req *FetchFolderRequest) , It returns (*FetchFolderResponse, error)
 	// var (
 	// 	err error // initialises a variable of error type
 	// 	f1  Folder // initialises a folder struct
@@ -34,16 +37,28 @@ func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) { // P
 	r, _ := FetchAllFoldersByOrgID(req.OrgID) // r is a slice of pointers to folder, _ is an error.
 	for k, v := range r {                     // for , pointer to folder, in a slice of pointers to folder.
 		f = append(f, *v) // this appends *v to the slice f
-		k++
+		fmt.Println(k)
+
 	}
 	var fp []*Folder        // initialises a slice of pointers to folders
 	for k1, v1 := range f { // This is a range loop . Its searching through all Folders in a slice of Folders.
 		fp = append(fp, &v1) // this appends &v1 to the slice of fp.
-		k1++
+		fmt.Println(k1)
 	}
 	var ffr *FetchFolderResponse            // var pointer to FetchFoldersResponse.
 	ffr = &FetchFolderResponse{Folders: fp} // fetchfolder response struct
 	return ffr, nil                         // returns the ffr and error as nil
+}
+func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
+	FolderOfFolders, err := FetchAllFoldersByOrgID(req.OrgID) // Made variables easier for me to understand as Folder Of Folders is more readable than a letter.
+	if err != nil {
+		return &FetchFolderResponse{}, errors.New("Error OCCURRED IN GETALLFOLDERS") // if an error is present in the getallfolders function then it will return there was an error to help fix it if need be.
+	}
+	var fetchResponse *FetchFolderResponse                         // var pointer to FetchFoldersResponse.
+	fetchResponse = &FetchFolderResponse{Folders: FolderOfFolders} // ffr equals dereferences FetchFolderResponse for
+
+	return fetchResponse, nil // it returns fetchFolderResponse and nil as the error.
+
 }
 
 func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
