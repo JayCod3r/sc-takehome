@@ -76,3 +76,78 @@ func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
 //Comments
 // One comment I would make would be to have clearer variables. As it would help with code readability if the variable names are more intuitive.
 // The GetAllFolders function has a return of an error yet only returns nil. I would add error handling of some kind to utilise this feature. Otherwise its just a waste.
+
+func Pagination(req *FetchFolderRequest) (*FetchFolderResponse, error) { //
+	/////////The way I got this section to work was I renamed this method to GetAllFolders. And changed the name of the other GetAllFolders Method.
+	/////////
+	// This section puts the data into the Folders2
+	Folders2 := []Folder{}
+	r, _ := FetchAllFoldersByOrgID(req.OrgID)
+	for k, v := range r { // for , pointer to folder, in a slice of pointers to folder.
+		Folders2 = append(Folders2, *v) // this appends *v to the slice f
+		k++
+	}
+	/////////
+	var token int
+	for i := 0; i <= 5; i++ {
+
+		fmt.Println("Choose a token between 0 and 499")
+		fmt.Scanln(&token)
+
+		if token <= -2 || token >= 500 { // This is because The tokens start at 0-499 as 0 is the first one. so there are still 500 token
+			// Also I don't want them to type in a negative integer as it would bring up none of the entries.
+
+			fmt.Println("Error: Invalid Token number")
+
+		} else if token == -1 { // Making this the exit point
+			fmt.Println("___________________________________________________")
+			fmt.Println("Thank you")
+			fmt.Println("___________________________________________________")
+			var fetchResponse *FetchFolderResponse
+			return fetchResponse, nil // returns to end // This section is a WIP
+		} else if token == 0 { // Exception 1 if the token is 0 it would need a different system as it is an outlier.
+			fmt.Println("___________________________________________________")
+			fmt.Print("Token: ")
+			fmt.Println(token)
+			fmt.Print("Folder entry 1: ")
+			fmt.Println(Folders2[token])
+			fmt.Print("Folder entry 2: ")
+			fmt.Println(Folders2[token+1])
+			fmt.Println("Previous Token: No Previous Token")
+			fmt.Println("Next Token: 1")
+			fmt.Println("Enter -1 to end")
+			fmt.Println("___________________________________________________")
+		} else if token == 499 { // Exception 2 as the final token has differences.
+			fmt.Println("___________________________________________________")
+			fmt.Print("Token: ")
+			fmt.Println(token)
+			fmt.Println("Folder entry 1: ")
+			fmt.Println(Folders2[token*2])
+			fmt.Print("Previous Token: ")
+			fmt.Println(token - 1)
+			fmt.Println("Next Token: No Next Token")
+			fmt.Println("Enter -1 to end")
+			fmt.Println("___________________________________________________")
+		} else {
+			fmt.Println("___________________________________________________")
+			fmt.Print("Token: ")
+			fmt.Println(token)
+			fmt.Print("Folder entry 1:")
+			fmt.Println(Folders2[token*2])
+			fmt.Print("Folder entry 2:")
+			fmt.Println(Folders2[token*2+1])
+			fmt.Print("Previous Token: ")
+			fmt.Println(token - 1)
+			fmt.Print("Next Token: ")
+			fmt.Println(token + 1)
+			fmt.Println("Enter -1 to end")
+			fmt.Println("___________________________________________________")
+		}
+
+	}
+
+	var fetchResponse *FetchFolderResponse
+	return fetchResponse, nil
+}
+
+////
